@@ -22,9 +22,12 @@ public class ProdigioCrudContoller {
     @PutMapping(value = "/vehicle-miles-traveled")
     public  ResponseEntity createVehicleMilesTraveled(@RequestBody CreateVehicleMilesTraveledRequest createVehicleMilesTraveledRequest){
 
-        vehicleMilesTraveledService.createVehicleMilesTraveled(createVehicleMilesTraveledRequest);
-
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        try {
+            vehicleMilesTraveledService.createVehicleMilesTraveled(createVehicleMilesTraveledRequest);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        } catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @ApiOperation("Permite obtener un registro de Vehicle miles traveled a través de su ID")
@@ -32,8 +35,12 @@ public class ProdigioCrudContoller {
     @GetMapping(value = "/vehicle-miles-traveled/{id}")
     public ResponseEntity<GetVehicleMilesTraveledResponse> getVehicleMilesTraveled(@PathVariable(value = "id") Long id){
 
-        return ResponseEntity.status(HttpStatus.OK).
-                body(vehicleMilesTraveledService.getVehicleMilesTraveled(id));
+        try {
+            return ResponseEntity.status(HttpStatus.OK).
+                    body(vehicleMilesTraveledService.getVehicleMilesTraveled(id));
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @ApiOperation("Permite eliminar un registro de Vehicle miles traveled a través de su ID")
@@ -41,8 +48,11 @@ public class ProdigioCrudContoller {
     @DeleteMapping(value = "/vehicle-miles-traveled/{id}")
     public  ResponseEntity deleteVehicleMilesTraveled(@PathVariable(value = "id") Long id){
 
-        vehicleMilesTraveledService.deleteVehicleMilesTraveled(id);
-
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        try {
+            vehicleMilesTraveledService.deleteVehicleMilesTraveled(id);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        } catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 }
