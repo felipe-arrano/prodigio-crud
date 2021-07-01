@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "0df5c431-706e-4a21-89e5-426740e32b96",
+		"name": "Prodigio CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create-vehicle-miles-traveled",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"countyFips\": 111111,\n    \"countyName\": \"Hola\",\n    \"stateName\": 11111,\n    \"date\": 11111,\n    \"countyVmt\": 111,\n    \"baselineJanVmt\": 11111,\n    \"percentChangeFromJan\": 111,\n    \"mean7CountyVmt\": 99,\n    \"mean7PercentChangeFromJan\": 99,\n    \"dateAtLow\": 99,\n    \"mean7CountyVmtAtLow\": 99,\n    \"percentChangeFromLow\": 99\n}"
+				},
+				"url": {
+					"raw": "https://prodigiocrud-1625017160730.azurewebsites.net/vehicle-miles-traveled",
+					"protocol": "https",
+					"host": [
+						"prodigiocrud-1625017160730",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"vehicle-miles-traveled"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-vehicle-miles-traveled",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://prodigiocrud-1625017160730.azurewebsites.net/vehicle-miles-traveled/1",
+					"protocol": "https",
+					"host": [
+						"prodigiocrud-1625017160730",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"vehicle-miles-traveled",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-vehicle-miles-traveled",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://prodigiocrud-1625017160730.azurewebsites.net/vehicle-miles-traveled/1",
+					"protocol": "https",
+					"host": [
+						"prodigiocrud-1625017160730",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"vehicle-miles-traveled",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
