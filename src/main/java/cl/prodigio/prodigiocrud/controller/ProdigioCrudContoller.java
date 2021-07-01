@@ -1,6 +1,7 @@
 package cl.prodigio.prodigiocrud.controller;
 
 import cl.prodigio.prodigiocrud.dto.CreateVehicleMilesTraveledRequest;
+import cl.prodigio.prodigiocrud.dto.CreateVehicleMilesTraveledResponse;
 import cl.prodigio.prodigiocrud.dto.GetVehicleMilesTraveledResponse;
 import cl.prodigio.prodigiocrud.service.VehicleMilesTraveledService;
 import io.swagger.annotations.*;
@@ -20,11 +21,11 @@ public class ProdigioCrudContoller {
     @ApiOperation("Permite crear y almacenar un registro de Vehicle miles traveled")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Vehicle miles traveled Creado")})
     @PutMapping(value = "/vehicle-miles-traveled")
-    public  ResponseEntity createVehicleMilesTraveled(@RequestBody CreateVehicleMilesTraveledRequest createVehicleMilesTraveledRequest){
+    public  ResponseEntity<CreateVehicleMilesTraveledResponse> createVehicleMilesTraveled(@RequestBody CreateVehicleMilesTraveledRequest createVehicleMilesTraveledRequest){
 
         try {
-            vehicleMilesTraveledService.createVehicleMilesTraveled(createVehicleMilesTraveledRequest);
-            return ResponseEntity.status(HttpStatus.OK).body(null);
+            return ResponseEntity.status(HttpStatus.OK).
+                    body(vehicleMilesTraveledService.createVehicleMilesTraveled(createVehicleMilesTraveledRequest));
         } catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }

@@ -2,6 +2,7 @@ package cl.prodigio.prodigiocrud.service;
 
 import cl.prodigio.prodigiocrud.domain.VehicleMilesTraveledEntity;
 import cl.prodigio.prodigiocrud.dto.CreateVehicleMilesTraveledRequest;
+import cl.prodigio.prodigiocrud.dto.CreateVehicleMilesTraveledResponse;
 import cl.prodigio.prodigiocrud.dto.GetVehicleMilesTraveledResponse;
 import cl.prodigio.prodigiocrud.repository.VehicleMilesTraveledRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class VehicleMilesTraveledServiceImpl implements VehicleMilesTraveledServ
     private VehicleMilesTraveledRepository vehicleMilesTraveledRepository;
 
     @Override
-    public void createVehicleMilesTraveled(CreateVehicleMilesTraveledRequest createVehicleMilesTraveledRequest) {
+    public CreateVehicleMilesTraveledResponse createVehicleMilesTraveled(CreateVehicleMilesTraveledRequest createVehicleMilesTraveledRequest) {
 
         VehicleMilesTraveledEntity vehicleMilesTraveledEntity = new VehicleMilesTraveledEntity();
         vehicleMilesTraveledEntity.setCountyName(createVehicleMilesTraveledRequest.getCountyName());
@@ -31,7 +32,12 @@ public class VehicleMilesTraveledServiceImpl implements VehicleMilesTraveledServ
         vehicleMilesTraveledEntity.setMean7PercentChangeFromJan(createVehicleMilesTraveledRequest.getMean7PercentChangeFromJan());
         vehicleMilesTraveledEntity.setStateName(createVehicleMilesTraveledRequest.getStateName());
 
-        vehicleMilesTraveledRepository.save(vehicleMilesTraveledEntity);
+        Long id = vehicleMilesTraveledRepository.save(vehicleMilesTraveledEntity).getId();
+
+        CreateVehicleMilesTraveledResponse createVehicleMilesTraveledResponse = new CreateVehicleMilesTraveledResponse();
+        createVehicleMilesTraveledResponse.setId(id);
+
+        return  createVehicleMilesTraveledResponse;
     }
 
     @Override
